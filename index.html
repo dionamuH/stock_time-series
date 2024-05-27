@@ -14971,61 +14971,41 @@ a.anchor-link {
   });
 </script>
 <style>
-  .jp-Mermaid:not(.jp-RenderedMermaid) {
-    display: none;
-  }
+        .page {
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
 
-  .jp-RenderedMermaid {
-    overflow: auto;
-    display: flex;
-  }
+        #navigation {
+            margin-bottom: 20px;
+        }
 
-  .jp-RenderedMermaid.jp-mod-warning {
-    width: auto;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    border: var(--jp-border-width) solid var(--jp-warn-color2);
-    border-radius: var(--jp-border-radius);
-    color: var(--jp-ui-font-color1);
-    font-size: var(--jp-ui-font-size1);
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
+        .navigation-button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #E5D0E3; /* pastel purple */
+            color: #444444; /* dark grey */
+            transition: background-color 0.3s ease;
+        }
 
-  .jp-RenderedMermaid figure {
-    margin: 0;
-    overflow: auto;
-    max-width: 100%;
-  }
-
-  .jp-RenderedMermaid img {
-    max-width: 100%;
-  }
-
-  .jp-RenderedMermaid-Details > pre {
-    margin-top: 1em;
-  }
-
-  .jp-RenderedMermaid-Summary {
-    color: var(--jp-warn-color2);
-  }
-
-  .jp-RenderedMermaid:not(.jp-mod-warning) pre {
-    display: none;
-  }
-
-  .jp-RenderedMermaid-Summary > pre {
-    display: inline-block;
-    white-space: normal;
-  }
-</style>
+        .navigation-button:hover {
+            background-color: #B8F3F9; /* pastel blue */
+        }
+    </style>
   
 </head>
 <body>
-    <div id="navigation">
-        <button onclick="showPage(1)">Predictive Modelling</button>
-        <button onclick="showPage(2)">Time Series Forecasting</button>
-    </div>
+  <div id="navigation">
+    <button class="navigation-button" onclick="showPage(1)">Predictive Modelling</button>
+    <button class="navigation-button" onclick="showPage(2)">Time Series Forecasting</button>
+</div>
 
     <div id="page1" class="page active">
       
