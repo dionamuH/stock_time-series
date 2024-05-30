@@ -15021,40 +15021,117 @@ a.anchor-link {
 </style>
 
 <style>
-        .page {
-            display: none;
-        }
-        
-        .active {
-            display: block;
-        }
+  .page {
+      display: none;
+  }
 
-        #navigation {
-            margin-bottom: 20px;
-        }
+  .active {
+      display: block;
+  }
 
-        .navigation-button {
-            padding: 10px 20px;
-            margin-right: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            background-color: #E5D0E3; /* pastel purple */
-            color: #444444; /* dark grey */
-            transition: background-color 0.3s ease;
-        }
+  #navigation {
+      margin-bottom: 40px;
+      margin-top: 20px !important;
+      margin-left: 35px;
+  }
 
-        .navigation-button:hover {
-            background-color: #B8F3F9; /* pastel blue */
-        }
-    </style>
+  .navigation-button {
+      padding: 10px 20px;
+      margin-right: 20px;
+      border: none;
+      border-radius: 10px; /* More rounded corners */
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #B0C4DE; /* pastel blue */
+      color: #2C3E50; /* dark grey */
+      transition: background-color 0.3s ease, box-shadow 0.1s ease, transform 0.1s ease;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12); /* Enhanced shadow */
+      background-image: linear-gradient(to bottom, #B0C4DE, #A2B9CC); /* gradient for 3D effect */
+      animation: breathe 4s infinite; /* Adding the breathe animation */
+  }
+
+  .navigation-button:hover {
+      background-color: #A2B9CC; /* Slightly darker pastel blue */
+      background-image: linear-gradient(to bottom, #A2B9CC, #91A4B5); /* Gradient for 3D effect */
+      transform: scale(1.05); /* Slightly enlarge the button on hover */
+  }
+
+  .navigation-button:active {
+      background-color: #91A4B5; /* Even darker pastel blue */
+      background-image: linear-gradient(to bottom, #91A4B5, #8194A0);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.12); /* Reduced shadow */
+      transform: translateY(2px) scale(1.02); /* Move down and slightly enlarge */
+  }
+
+  @keyframes breathe {
+      0%, 100% {
+          transform: scale(1);
+      }
+      50% {
+          transform: scale(1.05);
+      }
+  }
+</style>
+
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 0;
+      }
+
+      h1 {
+          text-align: center;
+      }
+      h2 {
+          margin-left: 80px; 
+      }
+      h3 {
+          margin-left: 80px; 
+          font-size: 20px;
+      }
+
+      p {
+          width: 1250px;
+          margin-left: 60px; 
+          width: 800px;
+          margin-left: 80px;
+      }
+
+      pre {
+          background-color: #f5f5f5;
+          padding: 20px;
+          border-radius: 5px;
+          width: 1250px;
+          margin-left: 80px;
+          overflow-x: auto;
+          box-shadow: inset 3px 3px 5px #888888;
+      }
+
+      pre code {
+          display: block;
+          white-space: pre;
+          overflow-x: auto;
+          font-family: 'Courier New', Courier, monospace;
+          color: #333;
+      }
+
+      .comment {
+          color: #888;
+      }
+
+      .keyword {
+          color: #007bff;
+      }
+  </style>
   
 </head>
 <body>
   <div id="navigation">
     <button class="navigation-button" onclick="showPage(1)">Predictive Modelling</button>
     <button class="navigation-button" onclick="showPage(2)">Time Series Forecasting</button>
+    <button class="navigation-button" onclick="showPage(3)">SQL Analysis - Trends & Patterns </button>
 </div>
 
     <div id="page1" class="page active">
@@ -18766,8 +18843,280 @@ a.anchor-link {
         </div>
         </div>
         </main>
+        <div id="page3" class="page active">
+          <h1>BITCOIN TRANSACTIONS - TRENDS AND PATTERNS ANALYSIS</h1>
+          <h2>
+              Introduction.
+          </h2>
+      
+          <p>
+              The objective of this project is to analyze bitcoin transaction data to uncover trends and patterns and gain insights into various aspects of bitcoin transactions, such as yearly income trends, high-value transactions, <br> and income distribution among different categories.
+          </p>
+             <br>   
+             
+             <h2>
+              Features of the Dataset
+            </h2>
+            
+  <p>
+    To achieve this objective, the following features will be analyzed:
+  </p> 
+  
+  <p>
+    <b>address:</b> Unique identifier.
+    <br>
+    <br>
+    <b>year:</b> The year the transaction occurred.
+    <br>
+    <br>
+    <b>day:</b> The specific day of the year when the transaction happened.
+    <br>
+    <br>
+    <b>length:</b> The duration of the transaction.
+    <br>
+    <br>
+    <b>weight:</b> The weight assigned to the transaction.
+    <br>
+    <br>
+    <b>count:</b> The total number of transactions linked to the address.
+    <br>
+    <br>
+    <b>looped:</b> Indicates whether the transaction is looped.
+    <br>
+    <br>
+    <b>neighbors:</b> The number of neighboring addresses involved in the transaction.
+    <br>
+    <br>
+    <b>income:</b> The amount of income associated with the address.
+    <br>
+    <br>
+    <b>label:</b> The category or type assigned to the transaction.
+    <br>
+    <br>
+</p>
+
+<h3>Data Manipulation & Analysis</h3>
+  
+                  
+      </code>
+      </pre>
+          <pre>
+              <code>
+              CREATE TABLE new_bitcoin AS
+              SELECT * FROM bitcoin;
+      </code>
+      </pre>
+      
+      <p>
+          Create a duplicate table named new_bitcoin as a copy of the original bitcoin table. This allows for analysis without altering the original data.
+      </p>
+          <br>
+      <pre>
+          <code>
+              SELECT * FROM new_bitcoin LIMIT 10;
+      </code>
+      </pre>
+      
+      <pre>
+          <code>
+              SELECT * FROM new_bitcoin
+              WHERE address IS NULL OR year IS NULL OR day IS NULL OR income IS NULL;
+                    
+      </code>
+      </pre>
+      
+      <pre>
+          <code>
+              SELECT address, COUNT(*)
+              FROM new_bitcoin
+              GROUP BY address
+              HAVING COUNT(*) > 1;    
+      </code>
+      </pre>
+      
+      <pre>
+          <code>
+              SELECT MIN(year) AS min_year,
+              MAX(year) AS max_year,
+              AVG(length) AS avg_length,
+              AVG(weight) AS avg_weight,
+              AVG(count) AS avg_count,
+              AVG(neighbors) AS avg_neighbors,
+              AVG(income) AS avg_income
+              FROM new_bitcoin;    
+      </code>
+      </pre>
+      
+      <pre>
+          <code>
+              SELECT year,
+              COUNT(*) AS transaction_count,
+              SUM(income) AS total_income,
+              AVG(weight) AS avg_weight
+              FROM new_bitcoin
+              GROUP BY year;   
+      </code>
+      </pre>
+      
+      <p>
+          Summarize transactions by year, including the total number of transactions, total income, and average weight.
+      </p>
+      <br>
+      <br>
+      <img src="./images/image1.png" alt="Screenshot for the SELECT query" width="600" style="margin-left: 160px;">
+      
+      
+      <pre>
+          <code>
+              SELECT label,
+              SUM(income) AS total_income,
+              COUNT(*) AS transaction_count,
+              AVG(income) AS avg_income
+              FROM new_bitcoin
+              GROUP BY label;
+          </code>
+      </pre>
+      
+      <p>
+          Group transactions by label to understand the distribution of income, transaction counts, and average income across different labels.
+      </p>
+          <br>
+          <br>
+              <img src="./images/image2.png" alt="Screenshot for the SELECT query" width="600" style="margin-left: 160px;">
+      
+      <pre>
+          <code>
+              ALTER TABLE new_bitcoin
+              ADD COLUMN income_per_transaction DECIMAL(15, 2);
+      </code>
+      </pre>
+      
+      <p>
+          Add a new column income_per_transaction to the table to calculate income per transaction for each record.
+      </p>
+      <br>
+      <pre>
+          <code>
+              UPDATE new_bitcoin
+              SET income_per_transaction = income / count;
+      </code>
+      </pre>
+      
+      <p>
+          Calculate and update the income_per_transaction column based on the income and transaction count for each record.
+      </p>
+      <br>
+      
+      <pre>
+          <code>
+              UPDATE new_bitcoin
+              SET high_value_transaction = (income > 200000000); 
+      </code>
+      </pre>
+      
+      <p>
+          Flag income/transactions over 200 million.
+      </p>
+      
+      <br>
+      <br>
+      <pre>
+          <code>
+              SELECT *
+              FROM new_bitcoin
+              WHERE high_value_transaction = TRUE;
+      </code>
+      </pre>
+      <img src="./images/image3.png" alt="Screenshot for the SELECT query" width="600" style="margin-left: 160px;">
+      
+      <pre>
+          <code>
+              ALTER TABLE new_bitcoin
+              ADD COLUMN high_value_transaction BOOLEAN;        
+      </code>
+      </pre>
+      
+      <pre>
+          <code>
+              UPDATE new_bitcoin
+              SET high_value_transaction = (income > 1e+08);
+      </code>
+      </pre>
+      
+      <pre>
+          <code>
+              SELECT label, address, SUM(income) AS total_income
+              FROM new_bitcoin
+              GROUP BY label, address
+              ORDER BY total_income DESC
+              LIMIT 5;     
+      </code>
+      </pre>
+      <p>
+          Top 5 labels & addresses by income
+      </p>
+      
+      <br>
+      <br>
+      <img src="./images/image4.png" alt="Screenshot for the SELECT query" width="600" style="margin-left: 160px;">
+      
+      <pre>
+          <code>
+              WITH yearly_income AS (
+              SELECT year, SUM(income) AS total_income
+              FROM bitcoin
+              GROUP BY year
+              )
+              SELECT
+              year,
+              total_income,
+              LAG(total_income) OVER (ORDER BY year) AS previous_year_income,
+              ((total_income - LAG(total_income) OVER (ORDER BY year)) / LAG(total_income) OVER (ORDER BY year)) 
+              * 100 AS growth_rate_percentage
+              FROM yearly_income;
+      </code>
+      </pre>
+      
+      <p>
+          previous year income vs Growth.The first row previous_year_income & growth_rate is null because it falls on the earliest year of the dataset and therefore has no previous year  
+      </p>
+      <br>
+      <br>
+      <img src="./images/image5.png" alt="Screenshot for the SELECT query" width="600" style="margin-left: 160px;">
+      
+      <pre>
+          <code>
+              SELECT
+              CASE
+              WHEN income < 50000000 THEN 'Low'        
+              WHEN income BETWEEN 50000000 AND 200000000 THEN 'Medium'  
+              ELSE 'High'                              
+              END AS income_bracket,
+              COUNT(*) AS transaction_count,
+              SUM(income) AS total_income
+              FROM bitcoin
+              GROUP BY income_bracket;
+      </code>
+      </pre>
+      <p>
+          categorize transactions as low, medium or high, based off of the total income column
+      </p>
+      <br>
+      <br>
+      <img src="./images/image6.png" alt="Screenshot for the SELECT query" width="600" style="margin-left: 160px;">
+      
+      <h2>
+      
+      Conclusion
+      </h2>
+      <p>
+      This analysis shows a clear overview of bitcoin transaction trends and patterns. The analysis of the bitcoin data sheds light on how Bitcoin transactions evolve over time, <br> identifies transactions involving the highest amounts of money, and shows how transactions are distributed across different income brackets.
+      </p>
+      
+      </div>
         
     </div>
+    
 
     <script>
         function showPage(pageNumber) {
